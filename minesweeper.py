@@ -194,19 +194,19 @@ class Minesweeper:
                     root.update()
                                        
                     if (self.board[(y, z)] == 'm'):
-                        print("RIP!")
+                        print("RIP!", "\n")
                         self.found_mine()              
                         self.gameover = 1
                         
                     elif self.board[(y, z)] == '0':
-                        print("No mines in sight") 
+                        print("No mines in sight", "\n") 
                         self.found_space((y, z))
 
                     elif self.board[(y, z)] == '1':
-                        print("There is 1 mine next to this spot")
+                        print("There is 1 mine next to this spot", "\n")
                         self.found_border((y, z))
                     else:
-                        print("There are", self.board[(y, z)], "mines next to this spot") 
+                        print("There are", self.board[(y, z)], "mines next to this spot", "\n") 
                         self.found_border((y, z))
     
     #After all of the mines are flagged, clear_remaining clears the remaining untouched spots
@@ -243,7 +243,7 @@ class Minesweeper:
                     g = g + 1
 
         if (self.cc == 0):
-            print("\n", "Random Move")
+            print("Random Move", "\n")
             move = moveara[(random.randrange(0,g))]
                 
         return move 
@@ -274,7 +274,7 @@ class Minesweeper:
         #time.sleep(0.25)
 
         #Prints out to the terminal the move and type of move
-        print("\n", row, ",", column)
+        print(row, ",", column)
 
         #Updates the GUI
         root.update()
@@ -310,7 +310,7 @@ class Minesweeper:
        
         if (self.board[space] != 'm'):
             self.print_field()
-            print("\n", "Incorrectly flagged mine at space:", space) 
+            print("Incorrectly flagged mine at space: ", space, "\n") 
             self.ic = self.ic + 1
             self.minefield[space] = 'i'
             
@@ -321,7 +321,7 @@ class Minesweeper:
             self.flags.append(space)
             self.tv_mines.set(self.tv_mines.get() - 1)
             self.flagcount = self.flagcount + 1
-            print("\n", "Ai has flagged a mine at space: ", space) 
+            print("Ai has flagged a mine at space: ", space, "\n") 
             
             #Updates the GUI
             root.update()
@@ -419,7 +419,7 @@ class Minesweeper:
 
                                 space = (y, z+1)
                                 if (self.minefield[space] == '-'):
-                                    print("\n", "Attempting 1 - 2 horizontal") 
+                                    print("Attempting 1 - 2 horizontal", "\n") 
                                     self.minefield[space] = 'c'
                                 
                                 
@@ -428,7 +428,7 @@ class Minesweeper:
 
                                 space = (y,z-1)
                                 if (self.minefield[space] == '-'):
-                                    print("\n", "Attempting 1 - 2 horizontal" )         
+                                    print("Attempting 1 - 2 horizontal", "\n")         
                                     self.minefield[space] = 'c'
 
             #1 - 2 Vertical Pattern
@@ -440,7 +440,7 @@ class Minesweeper:
 
                                 space = (y+1, z)
                                 if (self.minefield[space] == '-'):
-                                    print("\n", "Attempting 1 - 2 vertical") 
+                                    print("Attempting 1 - 2 vertical", "\n") 
                                     self.minefield[space] = 'c'
                                 
                                 
@@ -449,7 +449,7 @@ class Minesweeper:
 
                                 space = (y-1,z)
                                 if (self.minefield[space] == '-'):
-                                    print("\n", "Attempting 1 - 2 vertical" )         
+                                    print("Attempting 1 - 2 vertical", "\n")         
                                     self.minefield[space] = 'c'
 
             #2 - 1 Horizontal Pattern
@@ -461,7 +461,7 @@ class Minesweeper:
                 
                                 space = (y,z+1)
                                 if (self.minefield[space] == '-'):
-                                    print("\n", "Attempting 2 - 1 horizontal") 
+                                    print("Attempting 2 - 1 horizontal", "\n") 
                                     self.minefield[space] = 'c'
                                 
                                 
@@ -470,7 +470,7 @@ class Minesweeper:
 
                                 space = (y,z-1)
                                 if (self.minefield[space] == '-'):
-                                    print("\n", "Attempting 2 - 1 horizontal") 
+                                    print("Attempting 2 - 1 horizontal", "\n") 
                                     self.minefield[space] = 'c'
 
             #2 - 1 Vertical Pattern
@@ -482,7 +482,7 @@ class Minesweeper:
                 
                                 space = (y+1,z)
                                 if (self.minefield[space] == '-'):
-                                    print("\n", "Attempting 2 - 1 vertical") 
+                                    print("Attempting 2 - 1 vertical", "\n") 
                                     self.minefield[space] = 'c'
                                 
                                 
@@ -491,7 +491,7 @@ class Minesweeper:
 
                                 space = (y-1,z)
                                 if (self.minefield[space] == '-'):
-                                    print("\n", "Attempting 2 - 1 vertical") 
+                                    print("Attempting 2 - 1 vertical", "\n") 
                                     self.minefield[space] = 'c'
     
     #Finds the surrounding flags and surrounding untouched spaces
@@ -594,7 +594,7 @@ class Minesweeper:
                     
                         if(z + 1 < self.size[1] - 1):
                             if (((self.minefield[(y,z+1)] == '-') or (self.minefield[(y,z+1)] == 'f')) and ((self.minefield[(y+1,z+1)] == '-') or (self.minefield[(y+1,z+1)] == 'f'))):
-                                print("\n", "Attempting 1 - 2 - 2 - 1 horizontal") 
+                                print("Attempting 1 - 2 - 2 - 1 horizontal", "\n") 
                                 space = (y-1, z+1)
                                 if (self.minefield[space] == '-'):
                                     self.minefield[space] = 'c'
@@ -611,7 +611,7 @@ class Minesweeper:
                                 
                         elif(z - 1 > 0):
                             if (((self.minefield[(y,z-1)] == '-') or (self.minefield[(y,z-1)] == 'f')) and ((self.minefield[(y+1,z-1)] == '-') or (self.minefield[(y+1,z-1)] == 'f'))):
-                                print("\n", "Attempting 1 - 2 - 2 - 1 horizontal") 
+                                print("Attempting 1 - 2 - 2 - 1 horizontal", "\n") 
                                 space = (y-1, z-1)
                                 if (self.minefield[space] == '-'):
                                     self.minefield[space] = 'c'
@@ -632,7 +632,7 @@ class Minesweeper:
                     
                         if(z + 1 < self.size[1] - 1):
                             if (((self.minefield[(y-1,z+1)] == '-') or (self.minefield[(y-1,z+1)] == 'f')) and ((self.minefield[(y+1,z+1)] == '-') or (self.minefield[(y+1,z+1)] == 'f'))):
-                                print("\n", "Attempting 1 - 2 - 1 horizontal") 
+                                print("Attempting 1 - 2 - 1 horizontal", "\n") 
                                 space = (y-1,z+1)
                                 self.ai_flagger(space)
 
@@ -645,7 +645,7 @@ class Minesweeper:
                                 
                         elif(z - 1 > 0):
                             if (((self.minefield[(y-1,z-1)] == '-') or (self.minefield[(y-1,z-1)] == 'f')) and ((self.minefield[(y+1,z-1)] == '-') or (self.minefield[(y+1,z-1)] == 'f'))):
-                                print("\n", "Attempting 1 - 2 - 1 horizontal") 
+                                print("Attempting 1 - 2 - 1 horizontal", "\n") 
                                 space = (y-1,z-1)
                                 self.ai_flagger(space)
 
@@ -662,7 +662,7 @@ class Minesweeper:
                     
                         if(y + 1 < self.size[0] - 1):
                             if (((self.minefield[(y+1,z)] == '-') or (self.minefield[(y+1,z)] == 'f')) and ((self.minefield[(y+1,z+1)] == '-') or (self.minefield[(y+1,z+1)] == 'f'))):
-                                print("\n", "Attempting 1 - 2 - 2 - 1 vertical") 
+                                print("Attempting 1 - 2 - 2 - 1 vertical", "\n") 
                                 space = (y+1, z-1)
                                 if (self.minefield[space] == '-'):
                                     self.minefield[(y+1,z-1)] = 'c'
@@ -679,7 +679,7 @@ class Minesweeper:
                                 
                         elif(y - 1 > 0):
                             if (((self.minefield[(y-1,z)] == '-') or (self.minefield[(y-1,z)] == 'f')) and ((self.minefield[(y-1,z+1)] == '-') or (self.minefield[(y-1,z+1)] == 'f'))):
-                                print("\n", "Attempting 1 - 2 - 2 - 1 vertical") 
+                                print("Attempting 1 - 2 - 2 - 1 vertical", "\n") 
                                 space = (y-1, z-1)
                                 if (self.minefield[space] == '-'):
                                     self.minefield[space] = 'c'
@@ -700,7 +700,7 @@ class Minesweeper:
                         
                         if(y + 1 < self.size[0] - 1):
                             if (((self.minefield[(y+1,z-1)] == '-') or (self.minefield[(y+1,z-1)] == 'f')) and ((self.minefield[(y+1,z+1)] == '-') or (self.minefield[(y+1,z+1)] == 'f'))):
-                                print("\n", "Attempting 1 - 2 - 1 vertical") 
+                                print("Attempting 1 - 2 - 1 vertical", "\n") 
                                 space = (y+1,z-1)
                                 self.ai_flagger(space)
 
@@ -713,7 +713,7 @@ class Minesweeper:
                                 
                         elif(y - 1 > 0):
                             if (((self.minefield[(y-1,z-1)] == '-') or (self.minefield[(y-1,z-1)] == 'f')) and ((self.minefield[(y-1,z+1)] == '-') or (self.minefield[(y-1,z+1)] == 'f'))):
-                                print("\n", "Attempting 1 - 2 - 1 vertical") 
+                                print("Attempting 1 - 2 - 1 vertical", "\n") 
                                 space = (y-1,z-1)
                                 self.ai_flagger(space)
 
